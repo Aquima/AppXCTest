@@ -24,11 +24,64 @@ class AppUITests: XCTestCase {
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+
     }
 
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let app = XCUIApplication()
+        
+        let txtInput = app.textFields["txtValue"]
+        txtInput.tap()
+        
+        let keyA = app.keys["a"]
+        keyA.tap()
+        
+        let keyB = app.keys["b"]
+        keyB.tap()
+        
+        let keyC = app.keys["c"]
+        keyC.tap()
+        
+        let keyMore = app.keys["more"]
+        keyMore.tap()
+        
+        let key1 = app.keys["1"]
+        key1.tap()
+        
+        let btn = app.buttons["btnLogin"]
+        btn.tap()
+   
+    }
+    func testValidateNumber(){
+        let app = XCUIApplication()
+        let input = app.textFields["txtValue"]
+        input.tap()
+
+        let moreKey = app.keys["more"]
+        moreKey.tap()
+
+        let keyOne = app.keys["1"]
+        keyOne.tap()
+
+        let keyTwo = app.keys["2"]
+        keyTwo.tap()
+
+        let keyThree = app.keys["3"]
+        keyThree.tap()
+
+        let loginBtn = app.buttons["btnLogin"]
+
+        let label = app.textFields["123"]
+        let exist = NSPredicate(format: "exists == 1")
+        loginBtn.tap()
+
+        expectation(for: exist, evaluatedWith: label, handler: nil)
+        waitForExpectations(timeout: 1.0, handler: nil)
+
+     
     }
 
 }
